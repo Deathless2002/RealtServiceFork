@@ -36,6 +36,7 @@ public class SignUpCommandHandler : IRequestHandler<SignUpCommand, User>
         IdentityResult result = await _unitOfWork.UserManager.CreateAsync(user, request.Password);
         if (result.Succeeded)
         {
+            await _unitOfWork.UserManager.AddToRoleAsync(user, "Customer");
             return user;
         }
         else 

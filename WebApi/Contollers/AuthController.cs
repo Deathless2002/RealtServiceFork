@@ -34,7 +34,7 @@ public class AuthController : RealtServiceControllerBase
         {
             return Ok(new {token});
         }
-        return BadRequest();
+        return Unauthorized();
     }
 
     [HttpPost]
